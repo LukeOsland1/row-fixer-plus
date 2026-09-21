@@ -37,6 +37,8 @@ The initial store listings, images, contact verification, and privacy declaratio
 
 The publishing workflow downloads the exact GitHub release artifacts, verifies their hashes, manifests, and source commit, then submits each store in its own job. Chrome uses API v2. Firefox uses pinned `web-ext` and repackages the extracted Firefox ZIP contents for signing, with the exact matching source archive supplied separately.
 
+After creating the public Firefox listing, run **Publish Firefox listing artwork** from main to upload the current icon and add the two store screenshots with captions. This uses Mozilla's API and the same two secrets, without submitting another extension version. It skips screenshots with matching captions and preserves existing images; to replace a screenshot later, review and remove the old image in the dashboard first. An interrupted upload without a caption stops a retry for manual inspection to prevent duplicates.
+
 ## Failed or partial submissions
 
 All selected credentials must be configured before either store job starts. Invalid credentials or store-specific review blockers can still make one job fail after the other succeeds. Retry only the failed store using the same tag and target **chrome** or **firefox**.
