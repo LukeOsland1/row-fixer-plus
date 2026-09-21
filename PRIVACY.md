@@ -1,8 +1,8 @@
-# Privacy — YouTube Row Fixer Plus
+# Privacy — Row Fixer Plus
 
 Last updated: 21 September 2026.
 
-YouTube Row Fixer Plus is maintained by Luke Osland. It customises YouTube's layout and hides selected content. It does not collect, sell, or transmit personal data to its developer, and includes no analytics or advertising.
+Row Fixer Plus is maintained by Luke Osland. It customises YouTube's layout and hides selected content. It does not collect, sell, or transmit personal data to its developer, and includes no analytics or advertising.
 
 Layout, visibility, and popup appearance preferences are saved using Chrome's local extension storage. The extension does not sync these settings. Removing the extension clears its stored preferences.
 

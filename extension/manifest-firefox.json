@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "version": "1.2.0",
-  "name": "YouTube Row Fixer Plus",
+  "name": "Row Fixer Plus",
   "description": "Customise your YouTube grid, hide Shorts and Playables, and enjoy a cleaner feed with your own layout.",
   "permissions": ["scripting", "storage"],
   "host_permissions": ["https://www.youtube.com/*"],
@@ -9,7 +9,7 @@
     "scripts": ["background.js"]
   },
   "action": {
-    "default_title": "YouTube Row Fixer Plus",
+    "default_title": "Row Fixer Plus",
     "default_icon": "images/row-fixer-plus-32.png",
     "default_popup": "index.html"
   },

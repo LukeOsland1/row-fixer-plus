@@ -1,9 +1,12 @@
-# 1.2.0 — YouTube Row Fixer Plus (21 September 2026)
+# 1.2.0 — Row Fixer Plus (21 September 2026)
 
-- Independent branding, original icon, and colourful Layout / Hide / About popup.
-- Live layout preview, keyboard-accessible controls, and persistent light/dark appearance.
+- Renamed to **Row Fixer Plus**, described as "for YouTube" rather than carrying YouTube in the product name.
+- Rebuilt popup: every control on one screen, no tab bar, no scrolling on the home feed view.
+- Live preview at the top reflects videos per row and full-title state as you drag.
+- Sliders keep a typeable value box showing the maximum, so you can drag or enter an exact number.
+- Palette matches YouTube's own interface in light and dark, with red reserved for values and slider fills.
+- Theme, project link, and About moved to a footer action row; About keeps the privacy, credits, and independence notes.
 - Your existing layout and visibility preferences are retained.
-- Optional donation and store links are hidden until configured for this fork.
 - Privacy page, contributor credits, and licence notices included in release packages.
 - Retains the startup, channel-setting, packaging, and Playables fixes.
 

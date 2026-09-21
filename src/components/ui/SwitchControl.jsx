@@ -1,6 +1,11 @@
 import { useStorageState } from "../../hooks/useStorage";
 
-export default function SwitchControl({ label, storageKey, description }) {
+export default function SwitchControl({
+  label,
+  storageKey,
+  description,
+  hint,
+}) {
   const [selected, setSelected, loaded] = useStorageState(storageKey);
   return (
     <button
@@ -10,6 +15,7 @@ export default function SwitchControl({ label, storageKey, description }) {
       aria-label={label}
       aria-checked={!!selected}
       disabled={!loaded}
+      title={hint}
       onClick={() => setSelected(!selected)}
     >
       <span className="setting-copy">

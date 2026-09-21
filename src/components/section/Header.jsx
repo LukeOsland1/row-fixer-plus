@@ -6,13 +6,10 @@ import { useStorageState } from "../../hooks/useStorage";
 export default function Header() {
   const [enabled, setEnabled, loaded] = useStorageState(KeyExtensionStatus);
   return (
-    <header className="brand-header">
+    <header className="app-header">
       <div className="brand-lockup">
         <Logo />
-        <div>
-          <h1 title={brand.name}>{brand.shortName}</h1>
-          <p>FOR YOUTUBE</p>
-        </div>
+        <h1>{brand.shortName}</h1>
       </div>
       <button
         className={"power-control " + (enabled ? "is-on" : "")}
