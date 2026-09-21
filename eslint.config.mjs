@@ -30,6 +30,12 @@ export default [
     },
   },
   {
+    files: ["**/*.{js,mjs}"],
+    rules: {
+      "no-unused-vars": ["error", { args: "none", caughtErrors: "none" }],
+    },
+  },
+  {
     files: ["src/**/*.{js,jsx}"],
     plugins: { "react-hooks": hooks },
     rules: {
