@@ -1,5 +1,6 @@
 import { createHmac, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
+import { setTimeout as delay } from "node:timers/promises";
 
 const issuer = process.env.AMO_JWT_ISSUER;
 const secret = process.env.AMO_JWT_SECRET;
@@ -11,7 +12,7 @@ const manifest = JSON.parse(
 const url = `https://addons.mozilla.org/api/v5/addons/addon/${encodeURIComponent(manifest.browser_specific_settings.gecko.id)}/`;
 const encode = (value) =>
   Buffer.from(JSON.stringify(value)).toString("base64url");
-async function request(path = "", options = {}) {
+async function request(path = "", options = {}, attempt = 0) {
   const now = Math.floor(Date.now() / 1000);
   const unsigned = `${encode({ alg: "HS256", typ: "JWT" })}.${encode({ iss: issuer, jti: randomUUID(), iat: now, exp: now + 60 })}`;
   const token = `${unsigned}.${createHmac("sha256", secret).update(unsigned).digest("base64url")}`;
@@ -20,6 +21,21 @@ async function request(path = "", options = {}) {
     headers: { ...options.headers, Authorization: `JWT ${token}` },
     signal: AbortSignal.timeout(60_000),
   });
+  if (response.status === 429 && attempt < 2) {
+    const retryAfter = response.headers.get("retry-after");
+    const seconds = retryAfter === null ? 60 : Number(retryAfter);
+    const waitMs = Number.isFinite(seconds)
+      ? Math.max(1000, seconds * 1000)
+      : Math.max(1000, Date.parse(retryAfter) - Date.now());
+    if (Number.isFinite(waitMs) && waitMs <= 90_000) {
+      await response.body?.cancel();
+      console.log(
+        `Mozilla rate limit: retrying in ${Math.ceil(waitMs / 1000)} seconds.`,
+      );
+      await delay(waitMs);
+      return request(path, options, attempt + 1);
+    }
+  }
   if (!response.ok)
     throw new Error(
       `Mozilla artwork request failed: HTTP ${response.status}. Inspect the listing before retrying.`,
