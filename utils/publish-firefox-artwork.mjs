@@ -12,6 +12,7 @@ const manifest = JSON.parse(
 const url = `https://addons.mozilla.org/api/v5/addons/addon/${encodeURIComponent(manifest.browser_specific_settings.gecko.id)}/`;
 const encode = (value) =>
   Buffer.from(JSON.stringify(value)).toString("base64url");
+const retryDeadline = Date.now() + 65 * 60_000;
 async function request(path = "", options = {}, attempt = 0) {
   const now = Math.floor(Date.now() / 1000);
   const unsigned = `${encode({ alg: "HS256", typ: "JWT" })}.${encode({ iss: issuer, jti: randomUUID(), iat: now, exp: now + 60 })}`;
@@ -27,7 +28,7 @@ async function request(path = "", options = {}, attempt = 0) {
     const waitMs = Number.isFinite(seconds)
       ? Math.max(1000, seconds * 1000)
       : Math.max(1000, Date.parse(retryAfter) - Date.now());
-    if (Number.isFinite(waitMs) && waitMs <= 90_000) {
+    if (Number.isFinite(waitMs) && Date.now() + waitMs < retryDeadline) {
       await response.body?.cancel();
       console.log(
         `Mozilla rate limit: retrying in ${Math.ceil(waitMs / 1000)} seconds.`,
@@ -38,21 +39,23 @@ async function request(path = "", options = {}, attempt = 0) {
   }
   if (!response.ok)
     throw new Error(
-      `Mozilla artwork request failed: HTTP ${response.status}. Inspect the listing before retrying.`,
+      `Mozilla artwork request failed: HTTP ${response.status}, Retry-After: ${response.headers.get("retry-after") ?? "not provided"}. Inspect the listing before retrying.`,
     );
   return response.json();
 }
 const listing = await request("?lang=en-GB");
-const icon = new FormData();
-icon.set(
-  "icon",
-  new Blob([await readFile("public/images/row-fixer-plus-128.png")], {
-    type: "image/png",
-  }),
-  "row-fixer-plus-128.png",
-);
-await request("", { method: "PATCH", body: icon });
-console.log("Uploaded the current 128px icon.");
+if (process.env.UPDATE_ICON !== "false") {
+  const icon = new FormData();
+  icon.set(
+    "icon",
+    new Blob([await readFile("public/images/row-fixer-plus-128.png")], {
+      type: "image/png",
+    }),
+    "row-fixer-plus-128.png",
+  );
+  await request("", { method: "PATCH", body: icon });
+  console.log("Uploaded the current 128px icon.");
+}
 const images = [
   [
     "docs/store-assets/01-layout.png",
