@@ -1,67 +1,73 @@
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@nextui-org/react";
-import React from "react";
-import { RxGear, RxExternalLink } from "react-icons/rx";
-import SwitchControl from "../ui/SwitchControl";
-import { KeyExtensionStatus } from "../../data/storage-key";
+import brand from "../../data/brand.json";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import HorizontalLine from "../ui/HorizontalLine";
 
-function ExtensionSetting() {
+export default function ExtensionSetting() {
   return (
-    <Popover placement="bottom" offset={8}>
-      <PopoverTrigger>
-        <div className="cursor-pointer">
-          <RxGear size={24} />
-        </div>
-      </PopoverTrigger>
-      <PopoverContent className="w-[240px] dark:border-1 dark:border-content4">
-        <div className="flex w-full flex-col">
-          <SwitchControl
-            label="Extension Enabled"
-            storageKey={KeyExtensionStatus}
-            color="success"
-          />
-          <ThemeSwitcher />
+    <>
+      <div className="panel-intro">
+        <p className="eyebrow">MADE TO FIT YOU</p>
+        <h2>A little more control.</h2>
+        <p>An independent extension by {brand.author}.</p>
+      </div>
+      <section className="settings-card">
+        <ThemeSwitcher />
+        <a
+          className="link-row"
+          href={brand.repositoryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Project & support<span aria-hidden="true">↗</span>
+        </a>
+        {brand.storeUrl && (
           <a
-            href="https://chromewebstore.google.com/detail/youtube-row-fixer/kehjfphhkfppnnjhdfhanmehkegdppho"
+            className="link-row"
+            href={brand.storeUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button
-              fullWidth
-              color=""
-              className="items-center justify-between px-3 py-7"
-            >
-              <span className="text-medium">Rate the extension</span>
-              <RxExternalLink size={16} />
-            </Button>
+            Rate {brand.name}
+            <span aria-hidden="true">↗</span>
           </a>
-
-          <HorizontalLine />
-
+        )}
+        {brand.donationUrl && (
           <a
-            href="https://github.com/sapondanaisriwan/youtube-row-fixer"
+            className="link-row"
+            href={brand.donationUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button
-              fullWidth
-              color=""
-              className="items-center justify-between px-3 py-7"
-            >
-              <span className="text-medium">Help & Feedback</span>
-              <RxExternalLink size={16} />
-            </Button>
+            Support development<span aria-hidden="true">♡</span>
           </a>
-        </div>
-      </PopoverContent>
-    </Popover>
+        )}
+        <a
+          className="link-row"
+          href="privacy.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Privacy<span aria-hidden="true">↗</span>
+        </a>
+        <a
+          className="link-row"
+          href="credits.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Credits & licences<span aria-hidden="true">↗</span>
+        </a>
+      </section>
+      <div className="about-note">
+        <p>
+          Your preferences stay in this browser. No account, analytics, or
+          tracking.
+        </p>
+        <p>
+          Built on YouTube Row Fixer by Sapondanai Sriwan, with ytZara by
+          cyfung1031.
+        </p>
+        <p>Independent of YouTube and Google.</p>
+      </div>
+    </>
   );
 }
-
-export default ExtensionSetting;

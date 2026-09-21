@@ -1,3 +1,14 @@
+# 1.2.0 — YouTube Row Fixer Plus (21 September 2026)
+
+- Independent branding, original icon, and colourful Layout / Hide / About popup.
+- Live layout preview, keyboard-accessible controls, and persistent light/dark appearance.
+- Your existing layout and visibility preferences are retained.
+- Optional donation and store links are hidden until configured for this fork.
+- Privacy page, contributor credits, and licence notices included in release packages.
+- Retains the startup, channel-setting, packaging, and Playables fixes.
+
+---
+
 ## YouTube Row Fixer
 
 ### v1.0.7

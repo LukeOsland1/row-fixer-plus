@@ -1,22 +1,24 @@
 {
   "manifest_version": 3,
-  "version": "`1.1.6",
-  "name": "`Next.js & CRXJS Chrome Extension",
-  "description": "A chrome extension boilerplate using Next.js for building products and CRXJS for development.  ",
+  "version": "1.2.0",
+  "name": "YouTube Row Fixer Plus",
+  "description": "Customise your YouTube grid, hide Shorts and Playables, and enjoy a cleaner feed with your own layout.",
   "permissions": ["storage", "scripting"],
   "host_permissions": ["https://www.youtube.com/*"],
-  "background": { "service_worker": "src/background/background.js" },
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
   "action": {
-    "default_title": "Next.js & CRXJS Chrome Extension",
-    "default_icon": "public/images/rowFixer-32.png",
+    "default_title": "YouTube Row Fixer Plus",
+    "default_icon": "public/images/row-fixer-plus-32.png",
     "default_popup": "index.html"
   },
   "icons": {
-    "16": "public/images/rowFixer-16.png",
-    "32": "public/images/rowFixer-32.png",
-    "48": "public/images/rowFixer-48.png",
-    "64": "public/images/rowFixer-64.png",
-    "128": "public/images/rowFixer-128.png"
+    "16": "public/images/row-fixer-plus-16.png",
+    "32": "public/images/row-fixer-plus-32.png",
+    "48": "public/images/row-fixer-plus-48.png",
+    "64": "public/images/row-fixer-plus-64.png",
+    "128": "public/images/row-fixer-plus-128.png"
   },
   "content_scripts": [
     {

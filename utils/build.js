@@ -2,6 +2,7 @@ const { directory } = require("./modules/config");
 const processInlineScript = require("./modules/inlineScript");
 const moveFile = require("./modules/moveFiles");
 const renameFile = require("./modules/renameFiles");
+const writeNotices = require("./writeNotices");
 
 const main = async () => {
   try {
@@ -12,8 +13,10 @@ const main = async () => {
     );
     await renameFile(directory);
     await processInlineScript(directory);
+    await writeNotices(directory);
   } catch (err) {
     console.log(err);
+    process.exitCode = 1;
   }
 };
 

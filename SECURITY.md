@@ -1,13 +1,5 @@
-# Privacy Policy
+# Security and privacy
 
-Your privacy is important to us. This Privacy Policy outlines how YouTube Row Fixer handles your personal information.
+YouTube Row Fixer Plus is maintained independently by Luke Osland. See [PRIVACY.md](PRIVACY.md) for its data practices.
 
-## Information Collection and Usage
-
-YouTube Row Fixer does not store or collect any personal information. All user preferences, settings, or data are stored locally on the user's device in local storage.
-
-## Contact Information
-
-If you have any questions or concerns regarding the privacy policy, please feel free to contact us at sapondanaisriwan@gmail.com.
-
-We are committed to protecting your privacy and ensuring a safe and secure experience while using YouTube Row Fixer. Thank you for your trust and support.
+For maintainer and support details, use [this fork](https://github.com/LukeOsland1/youtube-row-fixer). Avoid including credentials or personal information in public reports. A private security contact has not yet been configured.

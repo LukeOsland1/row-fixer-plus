@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-crxjs-chrome-extension",
-  "version": "1.0.0",
+  "name": "youtube-row-fixer-plus",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "vite",

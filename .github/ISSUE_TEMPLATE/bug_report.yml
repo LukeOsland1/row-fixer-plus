@@ -3,7 +3,7 @@ description: Create a report to help us improve.
 title: "[Bug]: "
 labels: ["bug"]
 assignees:
-  - sapondanaisriwan
+  - LukeOsland1
 body:
   - type: textarea
     attributes:

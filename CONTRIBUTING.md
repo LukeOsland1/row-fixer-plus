@@ -1,54 +1,14 @@
 # Contributing
 
-Thank you for considering contributing to our project! Your contributions help make it better.
+This is the independently maintained YouTube Row Fixer Plus fork. Use Node 22.
 
-## Quick Start
+    git clone https://github.com/LukeOsland1/youtube-row-fixer.git
+    cd youtube-row-fixer
+    npm ci
+    npm run build
 
-1. **Clone the project**:
+Load build/ as an unpacked extension in Chrome or Edge. Reload the extension and refresh YouTube after rebuilding.
 
-```bash
-$ git clone https://github.com/sapondanaisriwan/youtube-row-fixer.git
-```
+Run npm run build before submitting changes; it runs lint checks and creates the production extension. npm test is the inherited script compilation command, not a behaviour test suite.
 
-2. **Install dependencies**:
-
-```bash
-$ npm install
-```
-
-## Development
-
-To start development, run:
-
-```bash
-$ npm run dev
-```
-
-Alternatively, you can click the "Run" button at the bottom left corner of your VS Code.
-
-![](https://i.imgur.com/2wAhMfn.png)
-
-## Building
-
-To build the project, use:
-
-```bash
-$ npm run test && npm run build
-```
-
-Alternatively, you can click the "Run" button at the bottom left corner of your VS Code.
-
-![](https://i.imgur.com/2wAhMfn.png)
-
-## Loading Extension
-
-#### Chrome / Edge
-
-1. Open `chrome://extensions` or `edge://extensions` in your browser.
-2. Toggle on the "Developer mode".
-3. Click on "Load unpacked" button.
-4. Select the folder
-   - `youtube-row-fixer/dist` for development.
-   - `youtube-row-fixer/build` for building.
-
-Feel free to reach out if you have any questions or need further assistance. We appreciate your contributions! 🚀
+Keep original copyright and licence notices. Branding and optional donation/store links are in src/data/brand.json. Distribution guidance is in docs/CHROME_STORE.md.

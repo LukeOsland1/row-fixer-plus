@@ -1,51 +1,26 @@
-import { Switch, cn } from "@nextui-org/react";
 import { useStorageState } from "../../hooks/useStorage";
-import HorizontalLine from "./HorizontalLine";
 
-function SwitchControl({
-  label,
-  storageKey,
-  color,
-  thumbIconOn,
-  thumbIconOff,
-  onChange,
-  borderBottom,
-  description,
-}) {
-  const [selected, setSelected, isLoaded] = useStorageState(storageKey);
-
+export default function SwitchControl({ label, storageKey, description }) {
+  const [selected, setSelected, loaded] = useStorageState(storageKey);
   return (
-    <>
-      {isLoaded && (
-        <>
-          <Switch
-            isSelected={selected}
-            onValueChange={setSelected}
-            onChange={onChange}
-            color={color ?? "primary"}
-            thumbIcon={selected ? thumbIconOn : thumbIconOff}
-            classNames={{
-              base: cn(
-                "inline-flex flex-row-reverse w-full max-w-full items-center",
-                "justify-between cursor-pointer gap-1 p-3"
-              ),
-              wrapper: "mr-0",
-              label: "text-small",
-            }}
-          >
-            {label}
-            {
-              description && (
-                <p className="text-default-500 text-xs">
-                  {description}
-                </p>
-              )}
-          </Switch>
-          <HorizontalLine borderBottom={borderBottom} />
-        </>
-      )}
-    </>
+    <button
+      type="button"
+      className="setting-switch"
+      role="switch"
+      aria-label={label}
+      aria-checked={!!selected}
+      disabled={!loaded}
+      onClick={() => setSelected(!selected)}
+    >
+      <span className="setting-copy">
+        <span className="setting-label">{label}</span>
+        {description && (
+          <span className="setting-description">{description}</span>
+        )}
+      </span>
+      <span className="switch-track" aria-hidden="true">
+        <span />
+      </span>
+    </button>
   );
 }
-
-export default SwitchControl;
