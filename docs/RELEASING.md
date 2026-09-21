@@ -33,11 +33,13 @@ The initial Chrome listing, images, contact verification, and privacy declaratio
 
 1. Bump the shared version and add `releases/<version>.md`. Commit, open a PR, and merge after CI passes.
 2. Tag the merged commit, for example `git tag v1.0.1`, then `git push origin v1.0.1`.
-3. **Build release** audits, builds, validates Firefox, and runs package/browser/publishing tests. It creates a GitHub release containing both ZIPs, the matching Firefox source, validation report, checksums, and commit provenance. Existing releases are not overwritten.
-4. Run **Submit store release** in GitHub Actions with that tag and target **both**. This explicit dispatch is the store submission action; pushing a tag only creates downloadable artifacts.
+3. **Release to stores** audits, builds, validates Firefox, and runs package/browser/publishing tests. It creates a GitHub release containing both ZIPs, the matching Firefox source, validation report, checksums, and commit provenance. Existing releases are not overwritten.
+4. After the release job succeeds, the same workflow automatically submits that tag to **both** stores. Pushing a release tag is now the submission action; no second dispatch is needed. Failed build or validation checks prevent both submissions. Store credentials are passed only to the submission workflow, and the two store jobs run independently.
 5. Check each store's result. A successful submission is not approval. The stores review independently, so the workflow keeps package versions aligned but cannot guarantee simultaneous publication.
 
-The publishing workflow downloads the exact GitHub release artifacts, verifies their hashes, manifests, and source commit, then submits each store in its own job. Chrome uses API v2. Firefox uses pinned `web-ext` and repackages the extracted Firefox ZIP contents for signing, with the exact matching source archive supplied separately.
+The publishing workflow downloads the exact GitHub release artifacts, verifies their hashes, manifests, and source commit, then submits each store in its own job. Chrome uses API v2. Firefox uses pinned `web-ext` and repackages the extracted Firefox ZIP contents for signing, with the exact matching source archive supplied separately. The tag workflow calls this reusable workflow directly, so it does not depend on a GitHub release event triggering another workflow.
+
+This automation applies to new tags containing the updated workflows. Do not move or re-push an existing release tag. To submit a release that already exists, or retry one store, run **Submit store release** manually with the existing tag and the desired store. Manually running **Release to stores** on a new version tag also builds and submits both stores.
 
 After creating the public Firefox listing, run **Publish Firefox listing artwork** from main to upload the current icon and add the two store screenshots with captions. This uses Mozilla's API and the same two secrets, without submitting another extension version. It skips screenshots with matching captions and preserves existing images; to replace a screenshot later, review and remove the old image in the dashboard first. An interrupted upload without a caption stops a retry for manual inspection to prevent duplicates.
 
@@ -45,7 +47,7 @@ Mozilla shares upload rate limits across submission and artwork requests. The ar
 
 ## Failed or partial submissions
 
-All selected credentials must be configured before either store job starts. Invalid credentials or store-specific review blockers can still make one job fail after the other succeeds. Retry only the failed store using the same tag and target **chrome** or **firefox**.
+All selected credentials must be configured before either store job starts. Invalid credentials or store-specific review blockers can still make one job fail after the other succeeds. Retry only the failed store using **Submit store release**, the same tag, and target **chrome** or **firefox**. Do not rerun the whole build for an existing GitHub release; it deliberately refuses to overwrite the saved artifacts.
 
 Chrome skips a version already published or pending review, and stops if another version is pending. It never automatically cancels reviews. An ambiguous network failure or duplicate Firefox version needs a dashboard status check before retrying; the workflow does not delete or replace submitted versions. If Firefox accepted the version, finish its listing/review in the dashboard rather than uploading that number again.
 
