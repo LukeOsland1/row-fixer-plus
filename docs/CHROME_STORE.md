@@ -35,7 +35,7 @@ Use a publicly accessible URL to PRIVACY.md after the release branch is merged, 
 ## Still needed before submission
 
 1. Register or use your Chrome Web Store developer account, complete its verification requirements, and pay its one-time fee if necessary.
-2. Supply your donation URL if you want the optional support link enabled. Set donationUrl in src/data/brand.json and rebuild. Update .github/FUNDING.yml only with your own account.
+2. The optional support link points to https://ko-fi.com/lukeosland, configured in src/data/brand.json. The GitHub funding link uses the same account in .github/FUNDING.yml.
 3. Confirm the final name, design, and listing text. Verify the final Chrome package in an actual browser, including enabled/disabled state after restart.
 4. Review the prepared images in docs/store-assets: two 1280×800 screenshots and a 440×280 promotional tile. The 128-pixel package icon includes transparent padding. Avoid claims that the original project is abandoned.
 5. Upload zip/Chrome v1.2.0.zip, complete the privacy fields and permission justifications, and submit for review. This project has not been submitted or published by Codex.
