@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/images/row-fixer-plus-128.png" width="88" alt="Row Fixer Plus">
+<img src="public/images/row-fixer-plus.svg" width="88" alt="Row Fixer Plus">
 
 # Row Fixer Plus
 
