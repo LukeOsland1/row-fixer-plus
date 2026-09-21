@@ -8,6 +8,7 @@ import {
   KeyDynamicVideo,
   KeyHideChannelProfile,
   KeyHideShort,
+  KeyHidePlayables,
   KeyPostPerRow,
   KeyShelfItemPerRow,
   KeyVideoPerRow,
@@ -22,6 +23,10 @@ function Main() {
           <SwitchControl
             label="Hide shorts"
             storageKey={KeyHideShort}
+          />
+          <SwitchControl
+            label="Hide Playables"
+            storageKey={KeyHidePlayables}
           />
           <SwitchControl
             label="Hide channel profile"
