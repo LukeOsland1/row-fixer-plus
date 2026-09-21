@@ -1,0 +1,10 @@
+{
+  "categories": ["appearance"],
+  "summary": {
+    "en-GB": "Customise your YouTube grid, hide Shorts and Playables, and enjoy a cleaner feed with your own layout."
+  },
+  "version": {
+    "license": "MIT",
+    "approval_notes": "Build with Node.js 24: npm ci, npm run build, npm run zip, npm run lint:firefox. See docs/FIREFOX_STORE.md in the attached matching source archive. Two innerHTML warnings originate in the unmodified React DOM 18.3.1 renderer. The extension does not use innerHTML or dangerouslySetInnerHTML. All code is bundled; no remote code or analytics. No extension account is needed. Test popup layout and hide controls on YouTube, separate channel settings, and saved preferences after reopening the popup."
+  }
+}

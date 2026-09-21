@@ -64,7 +64,7 @@ Then:
 
 Rebuilt it? Reload the extension on the extensions page, then refresh YouTube again. If you have the original YouTube Row Fixer installed, disable it — the two will fight over the same layout.
 
-`npm run zip` produces the store archives in `zip/`. Store submission is pending. The Firefox ZIP requires Firefox 142 or newer and is unsigned; it can be loaded temporarily through `about:debugging` for testing. See [Firefox submission and reviewer notes](docs/FIREFOX_STORE.md).
+`npm run zip` produces the store archives in `zip/`. Chrome's initial submission is under review; Firefox public distribution is being prepared. The Firefox ZIP requires Firefox 142 or newer and is unsigned; it can be loaded temporarily through `about:debugging` for testing. See [Firefox submission and reviewer notes](docs/FIREFOX_STORE.md) and [the shared release workflow](docs/RELEASING.md).
 
 ## 🧑‍💻 Contributing
 

@@ -1,10 +1,15 @@
 {
   "manifest_version": 3,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Row Fixer Plus",
   "description": "Customise your YouTube grid, hide Shorts and Playables, and enjoy a cleaner feed with your own layout.",
-  "permissions": ["storage", "scripting"],
-  "host_permissions": ["https://www.youtube.com/*"],
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
   "background": {
     "service_worker": "src/background/background.js"
   },
@@ -23,14 +28,23 @@
   "content_scripts": [
     {
       "run_at": "document_start",
-      "matches": ["https://www.youtube.com/*"],
-      "js": ["src/content-scripts/main.js"]
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/content-scripts/main.js"
+      ]
     }
   ],
   "web_accessible_resources": [
     {
-      "matches": ["<all_urls>"],
-      "resources": ["**/*", "*"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "**/*",
+        "*"
+      ],
       "use_dynamic_url": true
     }
   ]
