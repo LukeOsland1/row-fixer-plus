@@ -17,6 +17,13 @@ test("browser archives contain matching versions, icons, scripts, and licence no
       json(`extension/manifest-${browser.toLowerCase()}.json`),
     );
     expect(manifest.version).toBe(version);
+    if (browser === "Firefox") {
+      const { gecko } = manifest.browser_specific_settings;
+      expect(gecko.data_collection_permissions.required).toEqual(["none"]);
+      expect(
+        Number.parseInt(gecko.strict_min_version, 10),
+      ).toBeGreaterThanOrEqual(142);
+    }
     for (const [size, file] of Object.entries(manifest.icons)) {
       const png = zip.readFile(file);
       expect(png).toEqual(fs.readFileSync(`public/${file}`));
