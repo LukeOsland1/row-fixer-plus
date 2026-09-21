@@ -1,4 +1,4 @@
-# 1.2.0 — Row Fixer Plus (21 September 2026)
+# 1.0.0 — Row Fixer Plus (21 September 2026)
 
 - Renamed to **Row Fixer Plus**, described as "for YouTube" rather than carrying YouTube in the product name.
 - Rebuilt popup: every control on one screen, no tab bar, no scrolling on the home feed view.
