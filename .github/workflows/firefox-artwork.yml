@@ -1,6 +1,11 @@
 name: Publish Firefox listing artwork
 on:
   workflow_dispatch:
+    inputs:
+      update_icon:
+        description: Upload the icon (disable when resuming screenshot uploads)
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -12,7 +17,7 @@ concurrency:
 jobs:
   artwork:
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -22,4 +27,5 @@ jobs:
         env:
           AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
           AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+          UPDATE_ICON: ${{ inputs.update_icon }}
         run: node utils/publish-firefox-artwork.mjs

@@ -39,6 +39,8 @@ The publishing workflow downloads the exact GitHub release artifacts, verifies t
 
 After creating the public Firefox listing, run **Publish Firefox listing artwork** from main to upload the current icon and add the two store screenshots with captions. This uses Mozilla's API and the same two secrets, without submitting another extension version. It skips screenshots with matching captions and preserves existing images; to replace a screenshot later, review and remove the old image in the dashboard first. An interrupted upload without a caption stops a retry for manual inspection to prevent duplicates.
 
+Mozilla shares upload rate limits across submission and artwork requests. The artwork workflow honours `Retry-After`, allowing up to 65 minutes for rate-limit waits. When resuming after a partial upload, disable **update_icon** to avoid spending another request on an already saved icon. Captions are read in the listing's British English locale.
+
 ## Failed or partial submissions
 
 All selected credentials must be configured before either store job starts. Invalid credentials or store-specific review blockers can still make one job fail after the other succeeds. Retry only the failed store using the same tag and target **chrome** or **firefox**.
