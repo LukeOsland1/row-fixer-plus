@@ -1,6 +1,6 @@
 # Firefox submission
 
-Upload `zip/Firefox v1.0.0.zip` for the first submission. The failed validation did not establish a signed version, so this correction keeps version 1.0.0. The package requires Firefox 142 or newer. Android support is not declared or tested.
+Version 1.0.0 was signed for unlisted distribution. Upload `zip/Firefox v1.0.1.zip` with **On this site** selected for the public submission. Deleting a Mozilla version does not allow reuse of its version number. Both browser packages now use 1.0.1; see [the shared release workflow](RELEASING.md). The package requires Firefox 142 or newer. Android support is not declared or tested.
 
 The manifest declares `browser_specific_settings.gecko.data_collection_permissions.required` as `["none"]`: the extension does not collect or transmit personal data. Layout settings are stored locally. See the [privacy policy](../PRIVACY.md) and [Mozilla's data-consent documentation](https://extensionworkshop.com/documentation/develop/firefox-builtin-data-consent/). The minimum version includes support for the consent declaration and Manifest V3 APIs used by this extension.
 
@@ -15,7 +15,7 @@ npm run zip
 npm run lint:firefox
 ```
 
-The Firefox ZIP is written to `zip/Firefox v1.0.0.zip`. Validation uses Mozilla's pinned `addons-linter`; all files are scanned, errors fail the command, and warnings remain visible. The full report is `zip/firefox-validation.json`. ZIP timestamps can differ between builds.
+The Firefox ZIP is written to `zip/Firefox v1.0.1.zip`. Validation uses Mozilla's pinned `addons-linter`; all files are scanned, errors fail the command, and warnings remain visible. The full report is `zip/firefox-validation.json`. ZIP timestamps can differ between builds.
 
 ## Reviewer notes
 

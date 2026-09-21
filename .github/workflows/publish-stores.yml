@@ -1,0 +1,109 @@
+name: Submit store release
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing GitHub release tag (for example v1.0.1)
+        required: true
+        type: string
+      target:
+        description: Submit both stores, or retry only one store
+        required: true
+        default: both
+        type: choice
+        options: [both, chrome, firefox]
+
+permissions:
+  contents: read
+
+# Serialize all store submissions, including retries for a different tag.
+concurrency:
+  group: store-submission
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      stores: ${{ steps.targets.outputs.stores }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/tags/${{ inputs.tag }}
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check tag and credentials before submitting either store
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+          STORE_TARGET: ${{ inputs.target }}
+          CWS_PUBLISHER_ID: ${{ vars.CWS_PUBLISHER_ID }}
+          CWS_EXTENSION_ID: ${{ vars.CWS_EXTENSION_ID }}
+          CWS_CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
+          CWS_CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
+          CWS_REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: |
+          npm run check:version
+          npm run release:submit -- "$STORE_TARGET" --preflight
+      - id: targets
+        env:
+          STORE_TARGET: ${{ inputs.target }}
+        run: |
+          case "$STORE_TARGET" in
+            both) echo 'stores=["chrome","firefox"]' >> "$GITHUB_OUTPUT" ;;
+            chrome) echo 'stores=["chrome"]' >> "$GITHUB_OUTPUT" ;;
+            firefox) echo 'stores=["firefox"]' >> "$GITHUB_OUTPUT" ;;
+            *) exit 1 ;;
+          esac
+  submit:
+    needs: preflight
+    strategy:
+      fail-fast: false
+      matrix:
+        store: ${{ fromJSON(needs.preflight.outputs.stores) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      RELEASE_TAG: ${{ inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/tags/${{ inputs.tag }}
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Download the tested release artifacts
+        run: gh release download "$RELEASE_TAG" --dir zip/release
+      - run: npm run release:verify
+      - name: Submit Chrome package
+        if: matrix.store == 'chrome'
+        env:
+          CWS_PUBLISHER_ID: ${{ vars.CWS_PUBLISHER_ID }}
+          CWS_EXTENSION_ID: ${{ vars.CWS_EXTENSION_ID }}
+          CWS_CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
+          CWS_CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
+          CWS_REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
+        run: npm run release:submit -- chrome
+      - name: Submit Firefox package and source for public listing
+        if: matrix.store == 'firefox'
+        env:
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: npm run release:submit -- firefox
+      - name: Report submission outcome
+        if: always()
+        env:
+          STORE: ${{ matrix.store }}
+          RESULT: ${{ job.status }}
+        run: |
+          echo "### $STORE — $RELEASE_TAG: $RESULT" >> "$GITHUB_STEP_SUMMARY"
+          echo 'Success means submitted or already present, not store approval. If a request failed after upload, inspect the store dashboard before retrying.' >> "$GITHUB_STEP_SUMMARY"

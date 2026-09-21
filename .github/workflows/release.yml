@@ -1,0 +1,54 @@
+name: Build release
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Require a version tag
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+        run: test "$REF_TYPE" = tag
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check:version
+      - run: npm audit --audit-level=moderate
+      - run: npm run build
+      - run: npm run zip
+      - run: npm run lint:firefox
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - run: npm run release:prepare
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: release-${{ github.ref_name }}
+          path: zip/release/*
+          if-no-files-found: error
+      - name: Publish matching GitHub release assets
+        run: |
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release already exists. Refusing to replace its artifacts; use a new version."
+            exit 1
+          fi
+          gh release create "$RELEASE_TAG" zip/release/* --verify-tag --title "Row Fixer Plus $RELEASE_TAG" --notes-file zip/release/RELEASE_NOTES.md

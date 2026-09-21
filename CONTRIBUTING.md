@@ -15,6 +15,7 @@ Run the same checks as CI:
 
 ```bash
 npm audit --audit-level=moderate
+npm run check:version
 npm run build
 npm run zip
 npm run lint:firefox
@@ -31,3 +32,5 @@ If the downloaded test browser cannot start on Windows, set `$env:RFP_BROWSER_CH
 GitHub Actions runs the audit, build, Firefox package validation, and tests on pull requests and main, and uploads both browser ZIPs and the validation report. Firefox validation errors fail CI; warnings remain visible for review. Publish versioned releases only from a commit with passing CI; attach the matching Chrome and Firefox ZIPs. Firefox packages need signing before normal distribution through Firefox Add-ons. See [Firefox submission and reviewer notes](docs/FIREFOX_STORE.md).
 
 Keep original copyright and licence notices. Branding and optional donation/store links are in src/data/brand.json. Distribution guidance is in docs/CHROME_STORE.md.
+
+Use `npm version <major.minor.patch> --no-git-tag-version` to update both browsers and the popup together. See [release and store publishing instructions](docs/RELEASING.md) for tagged builds, API credentials, and retrying individual stores.

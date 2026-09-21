@@ -7,6 +7,7 @@ test("browser archives contain matching versions, icons, scripts, and licence no
   const { version, name } = json("package.json");
   const lock = json("package-lock.json");
   expect(lock.version).toBe(version);
+  expect(lock.packages[""].version).toBe(version);
   expect(lock.packages[""].name).toBe(name);
   expect(json("src/data/brand.json").version).toBe(version);
   expect(json("extension/manifest-dev.json").version).toBe(version);
