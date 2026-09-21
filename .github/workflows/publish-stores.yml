@@ -1,5 +1,29 @@
 name: Submit store release
 on:
+  workflow_call:
+    inputs:
+      tag:
+        description: Existing GitHub release tag built by the caller
+        required: true
+        type: string
+      target:
+        description: Stores to submit
+        required: false
+        default: both
+        type: string
+    secrets:
+      # Optional here so single-store retries only need that store's credentials.
+      # The preflight job checks the credentials required by the selected target.
+      CWS_CLIENT_ID:
+        required: false
+      CWS_CLIENT_SECRET:
+        required: false
+      CWS_REFRESH_TOKEN:
+        required: false
+      AMO_JWT_ISSUER:
+        required: false
+      AMO_JWT_SECRET:
+        required: false
   workflow_dispatch:
     inputs:
       tag:
