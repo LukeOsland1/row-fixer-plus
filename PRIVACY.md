@@ -12,6 +12,6 @@ Storage permission saves preferences. Scripting permission registers the local s
 
 Project, support, and optional donation or store links open only when clicked. Their destinations have their own privacy policies. Payment information is handled by a donation provider, never by this extension.
 
-Project and maintainer details: https://github.com/LukeOsland1/youtube-row-fixer
+Project and maintainer details: https://github.com/LukeOsland1/row-fixer-plus
 
 This policy will be updated if the extension's data practices change.

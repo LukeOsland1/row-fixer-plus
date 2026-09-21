@@ -1,47 +1,93 @@
+<div align="center">
+
+<img src="public/images/row-fixer-plus-128.png" width="88" alt="Row Fixer Plus">
+
 # Row Fixer Plus
 
-An independent YouTube layout and content-control extension maintained by Luke Osland.
+**Your feed. Your rules.**
 
-## Features
+Choose how many videos fit in a row on YouTube, and hide the things you never watch.
 
-- Set videos, Shorts, and community posts per row.
-- Use separate row settings for channel pages.
-- Hide Shorts, Playables, and channel avatars.
-- Show full video titles and use a wider channel layout.
-- Use a colourful popup with light and dark appearances.
-- Save preferences locally, with no analytics or account required.
+[![License](https://img.shields.io/github/license/LukeOsland1/row-fixer-plus?style=flat-square)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/LukeOsland1/row-fixer-plus?style=flat-square)](https://github.com/LukeOsland1/row-fixer-plus/stargazers)
+[![Issues](https://img.shields.io/github/issues/LukeOsland1/row-fixer-plus?style=flat-square)](https://github.com/LukeOsland1/row-fixer-plus/issues)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-support-ff5e5b?style=flat-square)](https://ko-fi.com/lukeosland)
 
-## Install locally
+<img src="docs/screenshots/layout-light.png" width="340" alt="Layout settings">
+<img src="docs/screenshots/hide-dark.png" width="340" alt="Hide settings">
 
-1. Build the extension using the instructions below.
-2. Open chrome://extensions (or edge://extensions).
-3. Enable Developer mode and choose Load unpacked.
-4. Select the build folder. Disable other copies of YouTube Row Fixer to avoid conflicting changes.
-5. Refresh YouTube. After rebuilding, reload the extension and refresh YouTube again.
+</div>
 
-## Build
+## 📑 Table of Contents
 
-Use Node 22 with the existing dependency lockfile. Node 26 is incompatible with this project's older Next.js build dependencies.
+- [📷 Screenshots](#-screenshots)
+- [🎛️ What you can change](#️-what-you-can-change)
+- [✨ Installation](#-installation)
+- [🧑‍💻 Contributing](#-contributing)
+- [💰 Support](#-support)
+- [🔒 Privacy](#-privacy)
+- [©️ Credit](#️-credit)
+- [©️ License](#️-license)
 
-    npm ci
-    npm run build
-    npm run zip
+## 📷 Screenshots
 
-The loadable extension is in build/. The Chrome upload archive is zip/Chrome v1.2.0.zip.
-The ZIP command also creates a Firefox archive; Firefox compatibility has not been verified for this release.
+| Layout | Hide |
+| --- | --- |
+| <img src="docs/screenshots/layout-light.png" width="300" alt="Layout settings in light appearance"> | <img src="docs/screenshots/hide-dark.png" width="300" alt="Hide settings in dark appearance"> |
 
-## Branding and support
+## 🎛️ What you can change
 
-The name, version, project URL, and optional donation/store links are configured in src/data/brand.json. Donation and rating links are hidden until configured. Manifest metadata must match this configuration when making a release.
+- Videos, Shorts, and community posts per row — drag the slider or type an exact number.
+- Separate row settings for channel pages.
+- Hide Shorts shelves, Playables, and channel avatars.
+- Show full video titles instead of truncated ones.
+- Fit the grid to smaller windows, and give channel pages a wider layout.
+- Light and dark, matching YouTube's own interface.
 
-This extension has not yet been published as a new Chrome Web Store listing. See [release preparation](docs/CHROME_STORE.md).
+Everything sits on one screen, and a live preview at the top shows the change before you go looking for it.
 
-## Credits
+## ✨ Installation
 
-Forked from [YouTube Row Fixer](https://github.com/sapondanaisriwan/youtube-row-fixer) by Sapondanai Sriwan, under the MIT licence. Includes [ytZara](https://github.com/cyfung1031) by cyfung1031 and the startup fix from [mospira's upstream PR #97](https://github.com/sapondanaisriwan/youtube-row-fixer/pull/97).
+Not on the Chrome Web Store or Firefox Add-ons yet, so build it yourself. Needs Node 20 or newer.
 
-Original copyright notices are retained. Built packages contain LICENSE.txt, THIRD_PARTY_NOTICES.txt, and an accessible credits page.
+```bash
+npm ci
+npm run build
+```
 
-Not affiliated with or endorsed by YouTube or Google. YouTube is a trademark of Google LLC.
+Then:
 
-[MIT licence](LICENSE) · [Privacy](PRIVACY.md)
+1. Open `chrome://extensions` (or `edge://extensions`).
+2. Turn on **Developer mode**, click **Load unpacked**.
+3. Pick the `build` folder.
+4. Refresh YouTube.
+
+Rebuilt it? Reload the extension on the extensions page, then refresh YouTube again. If you have the original YouTube Row Fixer installed, disable it — the two will fight over the same layout.
+
+`npm run zip` produces the store archives in `zip/`.
+
+## 🧑‍💻 Contributing
+
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the dev setup.
+
+## 💰 Support
+
+If this saved you some scrolling, you can [buy me a coffee](https://ko-fi.com/lukeosland). Entirely optional.
+
+## 🔒 Privacy
+
+Your settings stay in your browser. No account, no analytics, no tracking, nothing sent anywhere. See [PRIVACY.md](PRIVACY.md).
+
+## ©️ Credit
+
+- [Sapondanai Sriwan](https://github.com/sapondanaisriwan) — [YouTube Row Fixer](https://github.com/sapondanaisriwan/youtube-row-fixer), the original this is built on
+- [cyfung1031](https://github.com/cyfung1031) — [ytZara](https://github.com/cyfung1031/ytZara)
+- [mospira](https://github.com/sapondanaisriwan/youtube-row-fixer/pull/97) — upstream startup fix
+
+## ©️ License
+
+[MIT](LICENSE)
+
+<div align="center">
+<sub>Not affiliated with, endorsed by, or sponsored by YouTube or Google. YouTube is a trademark of Google LLC.</sub>
+</div>

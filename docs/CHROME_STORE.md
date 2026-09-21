@@ -20,7 +20,7 @@ Make your YouTube feed fit you. Choose how many videos appear in each row, give 
 - Choose a light or dark popup that matches YouTube's own interface.
 - Keep your preferences on your device, with no account or analytics.
 
-Plus is an independent fork of the MIT-licensed YouTube Row Fixer project. It includes fixes for startup reliability and channel settings, plus Playables filtering and a redesigned settings popup. Original contributors are credited in the extension.
+Row Fixer Plus is an independent fork of the MIT-licensed YouTube Row Fixer project. It includes fixes for startup reliability and channel settings, plus Playables filtering and a redesigned settings popup. Original contributors are credited in the extension.
 
 Not affiliated with or endorsed by YouTube or Google.
 

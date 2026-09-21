@@ -35,7 +35,7 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "youtube-row-fixer-plus@lukeosland1",
+      "id": "row-fixer-plus@lukeosland1",
       "strict_min_version": "102.0"
     }
   }
