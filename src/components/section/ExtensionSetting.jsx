@@ -1,23 +1,17 @@
 import brand from "../../data/brand.json";
-import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export default function ExtensionSetting() {
   return (
     <>
-      <div className="panel-intro">
-        <p className="eyebrow">MADE TO FIT YOU</p>
-        <h2>A little more control.</h2>
-        <p>An independent extension by {brand.author}.</p>
-      </div>
-      <section className="settings-card">
-        <ThemeSwitcher />
+      <p className="section-label">ABOUT</p>
+      <section className="settings-card" aria-label="About and links">
         <a
           className="link-row"
           href={brand.repositoryUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Project & support<span aria-hidden="true">↗</span>
+          Project &amp; support<span aria-hidden="true">↗</span>
         </a>
         {brand.storeUrl && (
           <a
@@ -26,7 +20,7 @@ export default function ExtensionSetting() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Rate {brand.name}
+            Rate {brand.shortName}
             <span aria-hidden="true">↗</span>
           </a>
         )}
@@ -54,10 +48,14 @@ export default function ExtensionSetting() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Credits & licences<span aria-hidden="true">↗</span>
+          Credits &amp; licences<span aria-hidden="true">↗</span>
         </a>
       </section>
       <div className="about-note">
+        <p>
+          {brand.shortName} {brand.descriptor}, an independent extension by{" "}
+          {brand.author}.
+        </p>
         <p>
           Your preferences stay in this browser. No account, analytics, or
           tracking.
@@ -66,7 +64,7 @@ export default function ExtensionSetting() {
           Built on YouTube Row Fixer by Sapondanai Sriwan, with ytZara by
           cyfung1031.
         </p>
-        <p>Independent of YouTube and Google.</p>
+        <p>Not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
       </div>
     </>
   );

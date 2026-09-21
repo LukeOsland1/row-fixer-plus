@@ -1,6 +1,6 @@
 # Contributing
 
-This is the independently maintained YouTube Row Fixer Plus fork. Use Node 22.
+This is the independently maintained Row Fixer Plus fork. Use Node 22.
 
     git clone https://github.com/LukeOsland1/youtube-row-fixer.git
     cd youtube-row-fixer

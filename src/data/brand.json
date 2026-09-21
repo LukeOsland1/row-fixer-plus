@@ -1,11 +1,12 @@
 {
-  "name": "YouTube Row Fixer Plus",
-  "storeName": "YouTube Row Fixer Plus",
+  "name": "Row Fixer Plus",
+  "storeName": "Row Fixer Plus",
+  "shortName": "Row Fixer Plus",
+  "descriptor": "for YouTube",
   "version": "1.2.0",
   "author": "Luke Osland",
   "tagline": "Your feed. Your rules.",
   "repositoryUrl": "https://github.com/LukeOsland1/youtube-row-fixer",
   "donationUrl": "https://ko-fi.com/lukeosland",
-  "storeUrl": null,
-  "shortName": "Row Fixer Plus"
+  "storeUrl": null
 }

@@ -2,7 +2,9 @@
 
 ## Draft listing
 
-**Name:** YouTube Row Fixer Plus
+**Name:** Row Fixer Plus
+
+**Naming note:** the product name must not contain "YouTube" or a variant of it; YouTube is referenced descriptively in the summary and description only. See https://developers.google.com/youtube/terms/branding-guidelines
 
 **Summary:** Customise your YouTube grid, hide Shorts and Playables, and enjoy a cleaner feed with your own layout.
 
@@ -15,7 +17,7 @@ Make your YouTube feed fit you. Choose how many videos appear in each row, give 
 - Adjust videos, Shorts, and community posts per row.
 - Hide Shorts, Playables, and channel avatars.
 - Show full video titles and use a wider channel layout.
-- Choose a light or dark popup with a clear, colourful design.
+- Choose a light or dark popup that matches YouTube's own interface.
 - Keep your preferences on your device, with no account or analytics.
 
 Plus is an independent fork of the MIT-licensed YouTube Row Fixer project. It includes fixes for startup reliability and channel settings, plus Playables filtering and a redesigned settings popup. Original contributors are credited in the extension.

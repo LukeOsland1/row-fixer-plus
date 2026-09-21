@@ -1,4 +1,4 @@
-# YouTube Row Fixer Plus
+# Row Fixer Plus
 
 An independent YouTube layout and content-control extension maintained by Luke Osland.
 
