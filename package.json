@@ -1,13 +1,14 @@
 {
-  "name": "youtube-row-fixer-plus",
+  "name": "row-fixer-plus",
   "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "vite",
     "test": "webpack",
-    "build": "next lint && next build && next export -o build && webpack --mode production && node utils/build.js",
+    "build": "npm run lint && vite build --config vite.build.config.js && webpack --mode production && node utils/build.js",
     "zip": "node utils/zip.js",
-    "prettier": "prettier --write src/**/*.{js,jsx,ts,tsx,css,scss}"
+    "prettier": "prettier --write src/**/*.{js,jsx,ts,tsx,css,scss}",
+    "lint": "eslint src utils --ext .js,.jsx"
   },
   "dependencies": {
     "next": "12.1.6",

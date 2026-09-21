@@ -9,6 +9,8 @@
 - Your existing layout and visibility preferences are retained.
 - Privacy page, contributor credits, and licence notices included in release packages.
 - Retains the startup, channel-setting, packaging, and Playables fixes.
+- Renamed the repository to row-fixer-plus and unified the name across the manifests, package.json, the Firefox add-on id, and the docs.
+- Replaced the Next.js build with Vite. npm run build now works on current Node; it previously crashed on anything newer than Node 22.
 
 ---
 
