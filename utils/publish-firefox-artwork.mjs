@@ -42,7 +42,7 @@ async function request(path = "", options = {}, attempt = 0) {
     );
   return response.json();
 }
-const listing = await request();
+const listing = await request("?lang=en-GB");
 const icon = new FormData();
 icon.set(
   "icon",
@@ -79,7 +79,7 @@ for (const [file, caption] of images) {
     )
   ) {
     throw new Error(
-      "An existing screenshot has no caption. Inspect it in the dashboard before retrying to avoid duplicates.",
+      `An existing screenshot has no caption. Inspect it in the dashboard before retrying to avoid duplicates. Saved captions: ${JSON.stringify(listing.previews.map(({ id, caption }) => ({ id, caption })))}`,
     );
   }
   const form = new FormData();
@@ -102,7 +102,7 @@ for (const [file, caption] of images) {
   listing.previews.push({ ...preview, caption: { "en-GB": caption } });
   console.log(`Uploaded screenshot: ${file}`);
 }
-const saved = await request();
+const saved = await request("?lang=en-GB");
 if (
   !images.every(([, caption]) =>
     saved.previews.some((preview) =>
