@@ -15,3 +15,11 @@ Project, support, and optional donation or store links open only when clicked. T
 Project and maintainer details: https://github.com/LukeOsland1/row-fixer-plus
 
 This policy will be updated if the extension's data practices change.
+
+## Maintainer release automation
+
+The separate Row Fixer Plus Release Pipeline OAuth app is used by the maintainer to upload and publish extension releases in the Chrome Web Store. Extension users do not sign in to this app or provide it with Google account access.
+
+The pipeline uses the Chrome Web Store OAuth permission to upload packages, read publication status, and submit releases. Its client secret and refresh token are stored as encrypted GitHub Actions secrets and used during authorised release jobs. Google processes the authorisation and store requests; GitHub runs the release jobs. These credentials are not included in the extension or published in the repository.
+
+Google account access is used only for release administration, not advertising or sale of data. The maintainer can revoke access through Google Account permissions and remove the corresponding GitHub secrets. Use of information received from Google APIs adheres to the Google API Services User Data Policy, including its Limited Use requirements.

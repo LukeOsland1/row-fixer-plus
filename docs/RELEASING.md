@@ -16,6 +16,8 @@ In [repository Actions settings](https://github.com/LukeOsland1/row-fixer-plus/s
 
 Follow [Google's OAuth setup](https://developer.chrome.com/docs/webstore/using-api) and [Mozilla's signing credentials instructions](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-sign). A browser login does not provide these CI credentials. Configure a durable OAuth app/token rather than relying on an expiring test token.
 
+The Google Cloud project is **Row Fixer Plus** (`radiant-shard-509314-u7`). Its OAuth app is **Row Fixer Plus Release Pipeline**, and its web client is **Row Fixer Plus GitHub Releases**, with `https://developers.google.com/oauthplayground` as its redirect URI. The Chrome Web Store API is enabled and the OAuth app is in production. Generate the refresh token using this client's credentials and only the `https://www.googleapis.com/auth/chromewebstore` scope, signed in as the store publisher. Google may show an unverified-app screen for a personal Chrome Web Store publishing client; the publisher must review and complete consent.
+
 Repository Actions variables:
 
 | Variable | Current value |
@@ -25,7 +27,7 @@ Repository Actions variables:
 
 Confirm the publisher ID against the Chrome dashboard's Publisher Settings before the first API submission. Firefox uses `row-fixer-plus@lukeosland1` from its manifest. The workflow always submits Firefox to the **listed** channel and supplies the MIT licence, source archive, release notes, and reviewer instructions.
 
-The initial store listings, images, contact verification, and privacy declarations still need completing in the dashboards. Chrome's first submission is currently under review. Firefox 1.0.0 was signed for unlisted distribution; 1.0.1 is prepared for the first public submission. Do not cancel Chrome's pending 1.0.0 review simply to run the new pipeline.
+The initial Chrome listing, images, contact verification, and privacy declarations were completed before its first 1.0.0 submission. Firefox 1.0.1 was submitted to the listed channel with matching source and reviewer notes; its icon, two screenshots, and support link are saved. Check current review status in each dashboard. Do not cancel Chrome's pending 1.0.0 review simply to run the new pipeline.
 
 ## Release sequence
 
