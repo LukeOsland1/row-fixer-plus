@@ -48,7 +48,7 @@ Everything sits on one screen, and a live preview at the top shows the change be
 
 ## ✨ Installation
 
-Not on the Chrome Web Store or Firefox Add-ons yet, so build it yourself. Needs Node 20 or newer.
+Download the Chrome ZIP from the [latest release](https://github.com/LukeOsland1/row-fixer-plus/releases/latest) and extract it, or build it yourself with Node 22.13 or newer (Node 24 recommended):
 
 ```bash
 npm ci
@@ -59,12 +59,12 @@ Then:
 
 1. Open `chrome://extensions` (or `edge://extensions`).
 2. Turn on **Developer mode**, click **Load unpacked**.
-3. Pick the `build` folder.
+3. Pick the extracted Chrome folder (or `build` if you built from source).
 4. Refresh YouTube.
 
 Rebuilt it? Reload the extension on the extensions page, then refresh YouTube again. If you have the original YouTube Row Fixer installed, disable it — the two will fight over the same layout.
 
-`npm run zip` produces the store archives in `zip/`.
+`npm run zip` produces the store archives in `zip/`. Store submission is pending. The Firefox ZIP is unsigned and can be loaded temporarily through `about:debugging` for testing.
 
 ## 🧑‍💻 Contributing
 

@@ -32,16 +32,24 @@ Not affiliated with or endorsed by YouTube or Google.
 - Remote code: none. All executed extension code is bundled in the ZIP.
 - Data collection: no developer collection or transmission. Settings remain local. Review dashboard definitions before making the final declarations.
 
-Use a publicly accessible URL to PRIVACY.md after the release branch is merged, or host the equivalent policy on your own site. The package also includes privacy.html.
+Privacy policy URL: https://github.com/LukeOsland1/row-fixer-plus/blob/main/PRIVACY.md. The package also includes privacy.html.
 
 ## Still needed before submission
 
-1. Register or use your Chrome Web Store developer account, complete its verification requirements, and pay its one-time fee if necessary.
-2. The optional support link points to https://ko-fi.com/lukeosland, configured in src/data/brand.json. The GitHub funding link uses the same account in .github/FUNDING.yml.
-3. Confirm the final name, design, and listing text. Verify the final Chrome package in an actual browser, including enabled/disabled state after restart.
-4. Review the prepared images in docs/store-assets: two 1280×800 screenshots and a 440×280 promotional tile. The 128-pixel package icon includes transparent padding. Avoid claims that the original project is abandoned.
-5. Upload zip/Chrome v1.0.0.zip, complete the privacy fields and permission justifications, and submit for review. This project has not been submitted or published by Codex.
-6. Once Chrome assigns your listing URL, set storeUrl in src/data/brand.json to enable your own rating link and rebuild for the next update.
+1. In your developer dashboard, confirm account verification and registration are complete.
+2. Upload `zip/Chrome v1.0.0.zip` (also available in the GitHub release). It contains the manifest at the ZIP root.
+3. Use the draft listing and privacy answers above. Upload `public/images/row-fixer-plus-128.png`, the two 1280×800 images in `docs/store-assets`, and `promo-440x280.png`.
+4. Review the final dashboard declarations and submit for review. No store upload or submission has been performed: the connected browser tool cannot script the Chrome Web Store dashboard.
+5. Once Chrome assigns your listing URL, set `storeUrl` in `src/data/brand.json` to enable your rating link and rebuild for the next update.
+
+## Prepared and verified
+
+- Current black, white, and red artwork, captured from the packaged popup with `npm run screenshots`.
+- Automated Chrome for Testing checks for saved home/channel settings, content visibility, and enabled/disabled state across browser restarts. The content test uses a controlled YouTube fixture; live YouTube can change independently.
+- Live smoke check on 21 September 2026 in Chrome 153: changing the row setting to seven updated the live YouTube grid; Shorts and Playables styles were injected. This is a smoke check, not coverage of every YouTube page or experiment.
+- Archive checks for matching versions, icons, bundled scripts, privacy pages, and licence notices.
+- CI builds and checks the packages on pull requests and main.
+- Support link: https://ko-fi.com/lukeosland. No account, analytics, or tracking is added by the extension.
 
 ## Official references
 

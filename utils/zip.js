@@ -1,15 +1,9 @@
 const { readFile, mkdir } = require("fs/promises");
 const { directory } = require("./modules/config");
-const fsExists = require("fs.promises.exists");
 const AdmZip = require("adm-zip");
 
 const run = async () => {
-  const isZipExists = await fsExists("zip");
-
-  if (!isZipExists) {
-    await mkdir("zip");
-    console.log("Create zip folder");
-  }
+  await mkdir("zip", { recursive: true });
 
   for (const browser of ["Chrome", "Firefox"]) {
     const manifest = await readFile(
@@ -25,4 +19,7 @@ const run = async () => {
   }
 };
 
-run();
+run().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

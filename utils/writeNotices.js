@@ -18,10 +18,10 @@ const escapeHtml = (value) =>
 const document = (title, body) => `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title} — ${brand.name}</title><style>
-body{max-width:780px;margin:60px auto;padding:0 24px;background:#171225;color:#f9f4ff;font:16px/1.7 Arial,sans-serif}
-h1{font-size:36px;line-height:1.2;letter-spacing:-1px}h2{font-size:22px;margin-top:36px}a{color:#c2a9ff}
-pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#221b34;border:1px solid #3b2e4f;padding:20px;border-radius:12px;font:13px/1.6 monospace}
-.brand{color:#ff9fb7;font-weight:bold}small{color:#b5a5ce}
+body{max-width:780px;margin:60px auto;padding:0 24px;background:#0f0f0f;color:#f1f1f1;font:16px/1.7 Arial,sans-serif}
+h1{font-size:36px;line-height:1.2;letter-spacing:-1px}h2{font-size:22px;margin-top:36px}a{color:#ff5c5c}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#212121;border:1px solid #303030;padding:20px;border-radius:12px;font:13px/1.6 monospace}
+.brand{color:#ff5c5c;font-weight:bold}small{color:#aaa}
 </style></head><body><p class="brand">${brand.name}</p><h1>${title}</h1>${body}</body></html>`;
 
 module.exports = async (directory) => {
@@ -73,7 +73,7 @@ module.exports = async (directory) => {
     for (const dependency of Object.keys(metadata.dependencies || {}))
       await visit(dependency, packageDir);
   };
-  for (const name of ["next", "react", "react-dom"])
+  for (const name of Object.keys(require("../package.json").dependencies))
     await visit(name, process.cwd());
   const allNotices = notices.join(
     "\n\n----------------------------------------\n\n"
