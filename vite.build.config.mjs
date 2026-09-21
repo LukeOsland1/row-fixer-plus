@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
 
 // Production build of the popup page.
 //
@@ -11,11 +10,6 @@ import { resolve } from "path";
 export default defineConfig({
   // Relative asset URLs so the popup resolves them from the extension root.
   base: "./",
-  resolve: {
-    alias: {
-      "@": resolve(import.meta.dirname, "./src"),
-    },
-  },
   plugins: [react()],
   build: {
     outDir: "build",

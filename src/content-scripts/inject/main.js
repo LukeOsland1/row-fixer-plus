@@ -181,7 +181,6 @@ const observablePromise = (proc, timeoutPromise) => {
     });
 
     proto.calcElementsPerRow = function (a, b) {
-      // return 7;
       // fix for "Breaking news" section for a large resolution
       if (!responsive) {
         return a === 194 ? settings.slimItemsPerRow : settings.elementsPerRow;

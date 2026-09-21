@@ -1,6 +1,5 @@
 import { addStyle } from "../utils/addStyle";
 import { KeyPostPerRow } from "../../../data/storage-key";
-import { removeElementById } from "../utils/removeElement";
 
 export const optionPostsPerRow = () => {
   addStyle(

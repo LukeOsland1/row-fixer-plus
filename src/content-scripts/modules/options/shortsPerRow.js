@@ -1,6 +1,5 @@
 import { addStyle } from "../utils/addStyle";
 import { KeyShelfItemPerRow } from "../../../data/storage-key";
-import { removeElementById } from "../utils/removeElement";
 
 export const optionShortsPerRow = (amount) => {
   addStyle(

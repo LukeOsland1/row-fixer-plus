@@ -9,11 +9,6 @@ module.exports = {
     bridge: "./src/content-scripts/inject/bridge.js",
     ytZara: "./src/content-scripts/inject/lib/ytZara.js",
   },
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "./src"),
-    },
-  },
   output: {
     filename: (fileData) => {
       if (
@@ -24,7 +19,6 @@ module.exports = {
       } else if (fileData.runtime === "ytZara") {
         return "inject/lib/[name].js";
       }
-      // console.log(fileData);
       return "[name].js";
     },
     path: resolve(__dirname, "build"),
