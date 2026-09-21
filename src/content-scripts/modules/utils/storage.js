@@ -32,7 +32,7 @@ export const getAllStorage = (keysArray) => {
 
 // set key-value pairs in local storage
 export const setStorage = (kv) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     chrome.storage.local.set(kv, () => {
       if (chrome.runtime.lastError) {
         console.warn(chrome.runtime.lastError.message);

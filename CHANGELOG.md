@@ -1,5 +1,8 @@
 # 1.0.0 — Row Fixer Plus (21 September 2026)
 
+- Updated the icon, README screenshots, store artwork, and release packages to match the new design.
+- Removed legacy Next.js and unused UI dependencies, refreshed the build tools, and added dependency audits and browser restart tests to CI.
+- Added reproducible popup and store screenshot generation.
 - Renamed to **Row Fixer Plus**, described as "for YouTube" rather than carrying YouTube in the product name.
 - Rebuilt popup: every control on one screen, no tab bar, no scrolling on the home feed view.
 - Live preview at the top reflects videos per row and full-title state as you drag.
