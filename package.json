@@ -9,6 +9,7 @@
     "zip": "node utils/zip.js",
     "prettier": "prettier --write src/**/*.{js,jsx,ts,tsx,css,scss}",
     "lint": "eslint src utils tests *.js *.mjs",
+    "lint:firefox": "node utils/lint-firefox.mjs",
     "screenshots": "node utils/screenshots.mjs"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "@crxjs/vite-plugin": "^2.7.1",
     "@playwright/test": "1.63.0",
     "@vitejs/plugin-react": "^6.1.1",
+    "addons-linter": "10.13.0",
     "adm-zip": "^0.6.1",
     "autoprefixer": "^10.4.19",
     "eslint": "^10.11.0",

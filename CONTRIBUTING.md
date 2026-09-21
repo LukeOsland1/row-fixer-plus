@@ -17,6 +17,7 @@ Run the same checks as CI:
 npm audit --audit-level=moderate
 npm run build
 npm run zip
+npm run lint:firefox
 npx playwright install chromium
 npm test
 ```
@@ -27,6 +28,6 @@ If the downloaded test browser cannot start on Windows, set `$env:RFP_BROWSER_CH
 
 `npm run screenshots` captures the built extension and regenerates the README screenshots, store images, and Ko-fi cover. Run it after `npm run build`; Chromium must already be installed. Review the generated images before committing.
 
-GitHub Actions runs the audit, build, and tests on pull requests and main, and uploads both browser ZIPs. Publish versioned releases only from a commit with passing CI; attach the matching Chrome and Firefox ZIPs. Firefox packages need signing before normal distribution through Firefox Add-ons.
+GitHub Actions runs the audit, build, Firefox package validation, and tests on pull requests and main, and uploads both browser ZIPs and the validation report. Firefox validation errors fail CI; warnings remain visible for review. Publish versioned releases only from a commit with passing CI; attach the matching Chrome and Firefox ZIPs. Firefox packages need signing before normal distribution through Firefox Add-ons. See [Firefox submission and reviewer notes](docs/FIREFOX_STORE.md).
 
 Keep original copyright and licence notices. Branding and optional donation/store links are in src/data/brand.json. Distribution guidance is in docs/CHROME_STORE.md.
