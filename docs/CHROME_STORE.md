@@ -37,10 +37,10 @@ Privacy policy URL: https://github.com/LukeOsland1/row-fixer-plus/blob/main/PRIV
 ## Still needed before submission
 
 1. In your developer dashboard, confirm account verification and registration are complete.
-2. The first 1.0.0 submission is already under review. Use `zip/Chrome v1.0.1.zip` for the next update after that review completes. It contains the manifest at the ZIP root. See [automated releases](RELEASING.md).
+2. The listing is published at https://chromewebstore.google.com/detail/row-fixer-plus/kdcmbgcilanlmlcilgenlioaicoonhmp (extension ID `kdcmbgcilanlmlcilgenlioaicoonhmp`). Use `zip/Chrome v1.2.0.zip` for the next update. It contains the manifest at the ZIP root. See [automated releases](RELEASING.md).
 3. Use the draft listing and privacy answers above. Upload `public/images/row-fixer-plus-128.png`, the two 1280×800 images in `docs/store-assets`, and `promo-440x280.png`.
 4. The user completed the initial store upload and submission. The connected browser tool cannot script the Chrome Web Store dashboard; future releases can use the API workflow once credentials are configured.
-5. Once Chrome assigns your listing URL, set `storeUrl` in `src/data/brand.json` to enable your rating link and rebuild for the next update.
+5. Done: `storeUrl` in `src/data/brand.json` points at the published listing, so the popup shows the rating link. Rebuild to pick it up.
 
 ## Prepared and verified
 

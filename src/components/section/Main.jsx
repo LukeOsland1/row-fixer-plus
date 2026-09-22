@@ -4,7 +4,7 @@ import SliderControl from "../ui/SliderControl";
 import LayoutPreview from "../ui/LayoutPreview";
 import ExtensionSetting from "./ExtensionSetting";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { GithubIcon, InfoIcon } from "../icon/Icons";
+import { GithubIcon, InfoIcon, KofiIcon } from "../icon/Icons";
 import { useStorageState } from "../../hooks/useStorage";
 import {
   KeyChannelPageShelfItemPerRow,
@@ -163,6 +163,19 @@ export default function Main() {
           >
             <InfoIcon />
           </button>
+          {brand.donationUrl && (
+            <a
+              className="kofi-link"
+              href={brand.donationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Support ${brand.shortName} on Ko-fi`}
+              title={`Support ${brand.shortName} on Ko-fi`}
+            >
+              <KofiIcon />
+              Support on Ko-fi
+            </a>
+          )}
         </div>
         <span>v{brand.version}</span>
       </footer>

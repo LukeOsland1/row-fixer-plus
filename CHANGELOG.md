@@ -1,3 +1,10 @@
+# 1.2.0 — Row Fixer Plus (22 September 2026)
+
+- Added a "Support on Ko-fi" link to the popup footer.
+- Brought both stores onto one version: Chrome was published at 1.0.0 while Firefox had 1.0.1 in review.
+- Rewrote the installation instructions around the Chrome Web Store listing, the pending Firefox listing, and building from source.
+- Enabled the in-popup rating link now that the Chrome Web Store listing is live.
+
 # 1.0.0 — Row Fixer Plus (21 September 2026)
 
 - Updated the icon, README screenshots, store artwork, and release packages to match the new design.

@@ -8,6 +8,7 @@
 
 Choose how many videos fit in a row on YouTube, and hide the things you never watch.
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kdcmbgcilanlmlcilgenlioaicoonhmp?style=flat-square&label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/row-fixer-plus/kdcmbgcilanlmlcilgenlioaicoonhmp)
 [![License](https://img.shields.io/github/license/LukeOsland1/row-fixer-plus?style=flat-square)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/LukeOsland1/row-fixer-plus?style=flat-square)](https://github.com/LukeOsland1/row-fixer-plus/stargazers)
 [![Issues](https://img.shields.io/github/issues/LukeOsland1/row-fixer-plus?style=flat-square)](https://github.com/LukeOsland1/row-fixer-plus/issues)
@@ -48,23 +49,44 @@ Everything sits on one screen, and a live preview at the top shows the change be
 
 ## ✨ Installation
 
-Download the Chrome ZIP from the [latest release](https://github.com/LukeOsland1/row-fixer-plus/releases/latest) and extract it, or build it yourself with Node 22.13 or newer (Node 24 recommended):
+### Chrome, Edge, and other Chromium browsers
+
+[**Install from the Chrome Web Store**](https://chromewebstore.google.com/detail/row-fixer-plus/kdcmbgcilanlmlcilgenlioaicoonhmp) — then refresh YouTube.
+
+Edge, Brave, Opera, and Vivaldi install it from the same listing. Edge asks you to allow extensions from other stores first.
+
+### Firefox
+
+The [Firefox Add-ons listing](https://addons.mozilla.org/en-US/firefox/addon/5f5dbdfc875b48f9be5a/) is submitted and **waiting on Mozilla review** — the link stays a "page not found" until it is approved. Until then, install it manually:
+
+1. Download `Firefox v*.zip` from the [latest release](https://github.com/LukeOsland1/row-fixer-plus/releases/latest).
+2. Open `about:debugging#/runtime/this-firefox`.
+3. Click **Load Temporary Add-on** and pick the ZIP.
+4. Refresh YouTube.
+
+This needs Firefox 142 or newer, and a temporary add-on is removed when you close Firefox. Android is not supported.
+
+### Build and install it yourself
+
+Node 22.13 or newer (Node 24 recommended):
 
 ```bash
+git clone https://github.com/LukeOsland1/row-fixer-plus.git
+cd row-fixer-plus
 npm ci
 npm run build
 ```
 
-Then:
+`build/` now holds the unpacked extension. To load it:
 
-1. Open `chrome://extensions` (or `edge://extensions`).
-2. Turn on **Developer mode**, click **Load unpacked**.
-3. Pick the extracted Chrome folder (or `build` if you built from source).
-4. Refresh YouTube.
+- **Chrome or Edge** — open `chrome://extensions` (or `edge://extensions`), turn on **Developer mode**, click **Load unpacked**, and pick `build`.
+- **Firefox** — run `npm run zip` and load `zip/Firefox v*.zip` through `about:debugging` as above.
 
-Rebuilt it? Reload the extension on the extensions page, then refresh YouTube again. If you have the original YouTube Row Fixer installed, disable it — the two will fight over the same layout.
+Refresh YouTube afterwards. Rebuilt it? Reload the extension on the extensions page, then refresh YouTube again.
 
-`npm run zip` produces the store archives in `zip/`. Chrome's initial submission is under review; Firefox public distribution is being prepared. The Firefox ZIP requires Firefox 142 or newer and is unsigned; it can be loaded temporarily through `about:debugging` for testing. See [Firefox submission and reviewer notes](docs/FIREFOX_STORE.md) and [the shared release workflow](docs/RELEASING.md).
+`npm run zip` also produces the packaged store archives in `zip/`. Build and validation details are in [CONTRIBUTING.md](CONTRIBUTING.md), [Firefox submission and reviewer notes](docs/FIREFOX_STORE.md), and [the shared release workflow](docs/RELEASING.md).
+
+> If you have the original YouTube Row Fixer installed, disable it — the two will fight over the same layout.
 
 ## 🧑‍💻 Contributing
 

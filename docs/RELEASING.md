@@ -1,6 +1,6 @@
 # Releasing both browser extensions
 
-`package.json` is the version source. Run `npm version 1.0.2 --no-git-tag-version` for the next release; its lifecycle script updates both store manifests, the development manifest, and the popup version. npm updates the lockfile. CI rejects mismatches. Never delete a Mozilla version to reuse its number: deletion does not free the number.
+`package.json` is the version source. Run `npm version 1.2.1 --no-git-tag-version` for the next release; its lifecycle script updates both store manifests, the development manifest, and the popup version. npm updates the lockfile. CI rejects mismatches. Never delete a Mozilla version to reuse its number: deletion does not free the number.
 
 ## One-time API setup
 
@@ -27,12 +27,12 @@ Repository Actions variables:
 
 Confirm the publisher ID against the Chrome dashboard's Publisher Settings before the first API submission. Firefox uses `row-fixer-plus@lukeosland1` from its manifest. The workflow always submits Firefox to the **listed** channel and supplies the MIT licence, source archive, release notes, and reviewer instructions.
 
-The initial Chrome listing, images, contact verification, and privacy declarations were completed before its first 1.0.0 submission. Firefox 1.0.1 was submitted to the listed channel with matching source and reviewer notes; its icon, two screenshots, and support link are saved. Check current review status in each dashboard. Do not cancel Chrome's pending 1.0.0 review simply to run the new pipeline.
+Chrome published 1.0.0 and Firefox had 1.0.1 in review, leaving the stores on different versions. Release 1.2.0 submits the same build to both to bring them back in line. Firefox's queued 1.0.1 is still reviewed independently; check current status in each dashboard.
 
 ## Release sequence
 
 1. Bump the shared version and add `releases/<version>.md`. Commit, open a PR, and merge after CI passes.
-2. Tag the merged commit, for example `git tag v1.0.1`, then `git push origin v1.0.1`.
+2. Tag the merged commit, for example `git tag v1.2.0`, then `git push origin v1.2.0`. Tags `v1.0.2` through `v1.1.8` belong to the upstream fork's history and are not Row Fixer Plus releases; do not reuse those numbers.
 3. **Release to stores** audits, builds, validates Firefox, and runs package/browser/publishing tests. It creates a GitHub release containing both ZIPs, the matching Firefox source, validation report, checksums, and commit provenance. Existing releases are not overwritten.
 4. After the release job succeeds, the same workflow automatically submits that tag to **both** stores. Pushing a release tag is now the submission action; no second dispatch is needed. Failed build or validation checks prevent both submissions. Store credentials are passed only to the submission workflow, and the two store jobs run independently.
 5. Check each store's result. A successful submission is not approval. The stores review independently, so the workflow keeps package versions aligned but cannot guarantee simultaneous publication.
