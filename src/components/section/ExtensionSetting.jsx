@@ -20,7 +20,7 @@ export default function ExtensionSetting() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Rate {brand.shortName}
+            Rate {brand.name}
             <span aria-hidden="true">↗</span>
           </a>
         )}
@@ -53,8 +53,7 @@ export default function ExtensionSetting() {
       </section>
       <div className="about-note">
         <p>
-          {brand.shortName} {brand.descriptor}, an independent extension by{" "}
-          {brand.author}.
+          {brand.name}, an independent extension by {brand.author}.
         </p>
         <p>
           Your preferences stay in this browser. No account, analytics, or

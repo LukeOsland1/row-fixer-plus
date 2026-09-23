@@ -2,6 +2,7 @@ import { chromium, expect } from "@playwright/test";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { openExtension } from "../tests/extension.mjs";
+import brand from "../src/data/brand.json" with { type: "json" };
 
 // Capture the packaged extension with real Chrome storage, in a disposable profile.
 const { context, worker, popup } = await openExtension("", {
@@ -70,32 +71,32 @@ try {
     await page.screenshot({ path: file });
     console.log(path.normalize(file));
   }
-  const brand = `<div class="brand"><img src="${logo}" alt="">Row Fixer Plus</div>`;
+  const brandMarkup = `<div class="brand"><img src="${logo}" alt="">${brand.name}</div>`;
   await render(
     "docs/store-assets/01-layout.png",
     1280,
     800,
-    `<div class="copy">${brand}<div class="eyebrow">A layout that fits you</div><h1>Your feed.<br>Your rules.</h1><p>Choose how many videos fit in a row on YouTube.</p><div class="benefits"><span>Precise row controls</span><span>Separate channel settings</span><span>A live layout preview</span></div></div><img class="shot" src="${await dataUrl("docs/screenshots/layout-light.png")}"><div class="foot">SMALL EXTENSION. MORE CONTROL.</div>`,
+    `<div class="copy">${brandMarkup}<div class="eyebrow">A layout that fits you</div><h1>Your feed.<br>Your rules.</h1><p>Choose how many videos fit in a row on YouTube.</p><div class="benefits"><span>Precise row controls</span><span>Separate channel settings</span><span>A live layout preview</span></div></div><img class="shot" src="${await dataUrl("docs/screenshots/layout-light.png")}"><div class="foot">SMALL EXTENSION. MORE CONTROL.</div>`,
   );
   await render(
     "docs/store-assets/02-hide.png",
     1280,
     800,
-    `<div class="copy">${brand}<div class="eyebrow">Less in the way</div><h1>Keep what<br>you watch.</h1><p>Hide Shorts shelves, Playables, and channel avatars.</p><div class="benefits"><span>Your settings stay in your browser</span><span>No account or tracking</span><span>Light and dark appearance</span></div></div><img class="shot" src="${await dataUrl("docs/screenshots/hide-dark.png")}"><div class="foot">YOUR FEED. YOUR RULES.</div>`,
+    `<div class="copy">${brandMarkup}<div class="eyebrow">Less in the way</div><h1>Keep what<br>you watch.</h1><p>Hide Shorts shelves, Playables, and channel avatars.</p><div class="benefits"><span>Your settings stay in your browser</span><span>No account or tracking</span><span>Light and dark appearance</span></div></div><img class="shot" src="${await dataUrl("docs/screenshots/hide-dark.png")}"><div class="foot">YOUR FEED. YOUR RULES.</div>`,
     `body{background:#0f0f0f;color:#f1f1f1}p,.foot{color:#aaa}.eyebrow,.benefits span:before{color:#ff5c5c}.shot{outline-color:#303030;box-shadow:0 15px 60px #0008}.brand img{background:#fff;border-radius:13px}`,
   );
   await render(
     "docs/store-assets/promo-440x280.png",
     440,
     280,
-    `<div class="promo">${brand}<h1>Your feed.<br>Your rules.</h1><p>A cleaner YouTube layout.</p><div class="rule"></div></div>`,
-    `.promo{padding:22px 30px}.brand{font-size:21px;gap:4px;margin-left:-8px}.brand img{width:48px;height:48px}h1{font-size:43px;letter-spacing:-1.8px;margin:18px 0 12px}p{font-size:16px}.rule{position:absolute;bottom:0;left:0;width:100%;height:7px;background:#c00}`,
+    `<div class="promo">${brandMarkup}<h1>Your feed.<br>Your rules.</h1><p>A cleaner YouTube layout.</p><div class="rule"></div></div>`,
+    `.promo{padding:22px 30px}.brand{font-size:15px;gap:4px;margin-left:-8px;letter-spacing:-.35px}.brand img{width:48px;height:48px}h1{font-size:43px;letter-spacing:-1.8px;margin:18px 0 12px}p{font-size:16px}.rule{position:absolute;bottom:0;left:0;width:100%;height:7px;background:#c00}`,
   );
   await render(
     "docs/kofi-assets/cover-1200x400.png",
     1200,
     400,
-    `<div class="cover">${brand}<h1>Your feed. Your rules.</h1><p>More control over your YouTube layout.</p></div><div class="grid"><i></i><i></i><i></i><i></i></div>`,
+    `<div class="cover">${brandMarkup}<h1>Your feed. Your rules.</h1><p>More control over your YouTube layout.</p></div><div class="grid"><i></i><i></i><i></i><i></i></div>`,
     `.cover{padding:38px 56px}h1{font-size:52px;max-width:800px;margin-top:35px;letter-spacing:-2px}p{font-size:21px}.grid{position:absolute;right:70px;top:89px;display:grid;grid-template-columns:86px 86px;gap:15px;background:#0f0f0f;padding:24px;border-radius:35px}.grid i{height:75px;background:#fff;border-radius:12px}.grid i:nth-child(2){background:#c00}`,
   );
 } finally {
