@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="public/images/row-fixer-plus.svg" width="88" alt="Row Fixer Plus">
+<img src="public/images/row-fixer-plus.svg" width="88" alt="Row Fixer Plus for YouTube">
 
-# Row Fixer Plus
+# Row Fixer Plus for YouTube
 
 **Your feed. Your rules.**
 

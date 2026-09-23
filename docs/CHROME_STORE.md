@@ -2,9 +2,9 @@
 
 ## Draft listing
 
-**Name:** Row Fixer Plus
+**Name:** Row Fixer Plus for YouTube
 
-**Naming note:** the product name must not contain "YouTube" or a variant of it; YouTube is referenced descriptively in the summary and description only. See https://developers.google.com/youtube/terms/branding-guidelines
+**Naming review:** This requested listing name combines the product name with "YouTube". Google's [Chrome Web Store branding guidelines](https://developer.chrome.com/docs/webstore/branding) recommend "for" to describe compatibility, but the [YouTube API branding guidelines](https://developers.google.com/youtube/terms/branding-guidelines) say not to use "YouTube" in conjunction with an application's overall name. Store acceptance is uncertain. Review the title in the dashboard before submission; a safer fallback is **Row Fixer Plus** with YouTube mentioned in the summary and description.
 
 **Summary:** Customise your YouTube grid, hide Shorts and Playables, and enjoy a cleaner feed with your own layout.
 
@@ -20,9 +20,11 @@ Make your YouTube feed fit you. Choose how many videos appear in each row, give 
 - Choose a light or dark popup that matches YouTube's own interface.
 - Keep your preferences on your device, with no account or analytics.
 
-Row Fixer Plus is an independent fork of the MIT-licensed YouTube Row Fixer project. It includes fixes for startup reliability and channel settings, plus Playables filtering and a redesigned settings popup. Original contributors are credited in the extension.
+Row Fixer Plus for YouTube is an independent fork of the MIT-licensed YouTube Row Fixer project. It includes fixes for startup reliability and channel settings, plus Playables filtering and a redesigned settings popup. Original contributors are credited in the extension.
 
 Not affiliated with or endorsed by YouTube or Google.
+
+YouTube is a trademark of Google LLC. Use of this trademark is subject to Google Permissions.
 
 ## Permissions and privacy answers
 
@@ -34,13 +36,11 @@ Not affiliated with or endorsed by YouTube or Google.
 
 Privacy policy URL: https://github.com/LukeOsland1/row-fixer-plus/blob/main/PRIVACY.md. The package also includes privacy.html.
 
-## Still needed before submission
+## Steps for the 1.2.1 name update
 
-1. In your developer dashboard, confirm account verification and registration are complete.
-2. The listing is published at https://chromewebstore.google.com/detail/row-fixer-plus/kdcmbgcilanlmlcilgenlioaicoonhmp (extension ID `kdcmbgcilanlmlcilgenlioaicoonhmp`). Use `zip/Chrome v1.2.0.zip` for the next update. It contains the manifest at the ZIP root. See [automated releases](RELEASING.md).
-3. Use the draft listing and privacy answers above. Upload `public/images/row-fixer-plus-128.png`, the two 1280×800 images in `docs/store-assets`, and `promo-440x280.png`.
-4. The user completed the initial store upload and submission. The connected browser tool cannot script the Chrome Web Store dashboard; future releases can use the API workflow once credentials are configured.
-5. Done: `storeUrl` in `src/data/brand.json` points at the published listing, so the popup shows the rating link. Rebuild to pick it up.
+1. In the existing [listing's developer dashboard](https://chrome.google.com/webstore/devconsole/), check the **Store listing** tab against the draft above and add the YouTube trademark attribution to its description. Review the title against the naming guidance linked above.
+2. Merge the change, then push the new `v1.2.1` tag as described in [the release workflow](RELEASING.md). The workflow uploads the versioned package to the existing listing (extension ID `kdcmbgcilanlmlcilgenlioaicoonhmp`) and submits it for review if the configured credentials work. If submitting manually, upload `zip/Chrome v1.2.1.zip` to that same listing; it contains the manifest at the ZIP root.
+3. Check the dashboard for the review outcome and confirm that the visible title has changed. Store review can reject the requested title under YouTube's naming guidance.
 
 ## Prepared and verified
 

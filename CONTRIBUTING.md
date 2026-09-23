@@ -1,6 +1,6 @@
 # Contributing
 
-Row Fixer Plus, independently maintained. Node 22.13 or newer; Node 24 is recommended and used by CI.
+Row Fixer Plus for YouTube, independently maintained. Node 22.13 or newer; Node 24 is recommended and used by CI.
 
     git clone https://github.com/LukeOsland1/row-fixer-plus.git
     cd row-fixer-plus
