@@ -106,7 +106,38 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Download the tested release artifacts
-        run: gh release download "$RELEASE_TAG" --dir zip/release
+        run: |
+          release_id=$(gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" --jq '.id')
+          version=${RELEASE_TAG#v}
+          names=(
+            "Chrome.v$version.zip"
+            "Firefox.v$version.zip"
+            "Firefox-source-v$version.zip"
+            firefox-validation.json
+            release.json
+            RELEASE_NOTES.md
+            SHA256SUMS.txt
+          )
+          for attempt in {1..12}; do
+            assets=$(gh api "repos/$GH_REPO/releases/$release_id/assets?per_page=100")
+            missing=0
+            for name in "${names[@]}"; do
+              if ! jq -e --arg name "$name" '.[] | select(.name == $name and .state == "uploaded")' <<< "$assets" > /dev/null; then
+                missing=1
+              fi
+            done
+            if [ "$missing" -eq 0 ]; then break; fi
+            sleep 5
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "Release assets are not ready for $RELEASE_TAG."
+            exit 1
+          fi
+          mkdir -p zip/release
+          for name in "${names[@]}"; do
+            url=$(jq -r --arg name "$name" '.[] | select(.name == $name) | .browser_download_url' <<< "$assets")
+            curl --fail --location --silent --show-error --retry 5 --retry-delay 2 --output "zip/release/$name" "$url"
+          done
       - run: npm run release:verify
       - name: Submit Chrome package
         if: matrix.store == 'chrome'
