@@ -1,3 +1,8 @@
+# 1.2.1 — Row Fixer Plus for YouTube (23 September 2026)
+
+- Updated the extension name across Chrome and Firefox packages, the popup, store artwork, and current project text.
+- No functionality, permissions, or data practices changed.
+
 # 1.2.0 — Row Fixer Plus (22 September 2026)
 
 - Added a "Support on Ko-fi" link to the popup footer.

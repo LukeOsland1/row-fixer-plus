@@ -1,6 +1,6 @@
 {
-  "name": "row-fixer-plus",
-  "version": "1.2.0",
+  "name": "row-fixer-plus-for-youtube",
+  "version": "1.2.1",
   "private": true,
   "scripts": {
     "dev": "vite",

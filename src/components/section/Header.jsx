@@ -9,7 +9,7 @@ export default function Header() {
     <header className="app-header">
       <div className="brand-lockup">
         <Logo />
-        <h1>{brand.shortName}</h1>
+        <h1>{brand.name}</h1>
       </div>
       <button
         className={"power-control " + (enabled ? "is-on" : "")}

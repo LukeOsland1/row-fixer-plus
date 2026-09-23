@@ -169,8 +169,8 @@ export default function Main() {
               href={brand.donationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Support ${brand.shortName} on Ko-fi`}
-              title={`Support ${brand.shortName} on Ko-fi`}
+              aria-label={`Support ${brand.name} on Ko-fi`}
+              title={`Support ${brand.name} on Ko-fi`}
             >
               <KofiIcon />
               Support on Ko-fi

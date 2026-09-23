@@ -51,7 +51,7 @@ jobs:
             echo "Release already exists. Refusing to replace its artifacts; use a new version."
             exit 1
           fi
-          gh release create "$RELEASE_TAG" zip/release/* --verify-tag --title "Row Fixer Plus $RELEASE_TAG" --notes-file zip/release/RELEASE_NOTES.md
+          gh release create "$RELEASE_TAG" zip/release/* --verify-tag --title "Row Fixer Plus for YouTube $RELEASE_TAG" --notes-file zip/release/RELEASE_NOTES.md
   stores:
     needs: release
     uses: ./.github/workflows/publish-stores.yml
